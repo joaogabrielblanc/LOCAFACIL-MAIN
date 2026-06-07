@@ -2,6 +2,7 @@
   "buildCommand": false,
   "public": ".",
   "rewrites": [
+    { "source": "/", "destination": "/index.html" },
     { "source": "/:path(.+)", "destination": "/$1" },
     { "source": "/(.*)\\.(js|css|ico|png|jpg|jpeg|svg|webp|woff|woff2)$", "destination": "/$1.$2" }
   ],
@@ -17,12 +18,6 @@
           "key": "X-Content-Type-Options",
           "value": "nosniff"
         }
-        {
-  "rewrites": [
-    { "source": "/", "destination": "/index.html" },
-    { "source": "/(.*)", "destination": "/$1" }
-  ]
-}
       ]
     }
   ]
