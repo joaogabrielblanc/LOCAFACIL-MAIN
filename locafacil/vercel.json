@@ -17,6 +17,12 @@
           "key": "X-Content-Type-Options",
           "value": "nosniff"
         }
+        {
+  "rewrites": [
+    { "source": "/", "destination": "/index.html" },
+    { "source": "/(.*)", "destination": "/$1" }
+  ]
+}
       ]
     }
   ]
