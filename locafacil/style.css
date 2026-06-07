@@ -9,7 +9,7 @@ body {
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
     color: #333;
-    background: linear-gradient(300deg, #1e3c2a 0%, #000000 25%, #4a7c59 75%, rgb(67, 92, 56) 100%);
+    background: linear-gradient(135deg, #1e3c2a 0%, #2d5a3d 25%, #4a7c59 75%, #7fb069 100%);
     min-height: 100vh;
 }
 
@@ -178,7 +178,7 @@ body {
 }
 
 .cta-btn:hover {
-    background: linear-gradient(135deg, #000000, #4a7c59);
+    background: linear-gradient(135deg, #2d5a3d 25%, #4a7c59 75%,);
     transform: translateY(-2px);
     box-shadow: 0 6px 25px rgba(74, 124, 89, 0.4);
 }
@@ -427,7 +427,7 @@ body {
 .service-image {
     width: 80px;
     height: 80px;
-    background: linear-gradient(240deg, #000000, rgb(76, 189, 27));
+    background: linear-gradient(240deg,#2d5a3d 25%, #4a7c59 75%, #7fb069 100%);
     border-radius: 15px;
     display: flex;
     align-items: center;
@@ -458,7 +458,7 @@ body {
 }
 
 .service-btn {
-    background: linear-gradient(135deg, #000000, #56b829);
+    background: linear-gradient(240deg,#2d5a3d 25%, #4a7c59 75%, #7fb069 100%);
     color: rgb(255, 255, 255);
     border: none;
     padding: 12px 25px;
@@ -470,7 +470,7 @@ body {
 }
 
 .service-btn:hover {
-    background: linear-gradient(135deg, #000000, #33be5d);
+    background: linear-gradient(240deg,#2d5a3d 25%, #4a7c59 75%, #7fb069 100%);
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
 }
@@ -519,7 +519,7 @@ body {
 }
 
 .contact-btn {
-    background: linear-gradient(135deg, #000000, #00ff6a);
+    background: linear-gradient(240deg,#2d5a3d 25%, #4a7c59 75%, #7fb069 100%);
     color: white;
     border: none;
     padding: 15px 30px;
@@ -535,7 +535,7 @@ body {
 }
 
 .contact-btn:hover {
-    background: linear-gradient(135deg, #093833, #00ff5e);
+    background: linear-gradient(240deg,#2d5a3d 25%, #4a7c59 75%, #7fb069 100%);
     transform: translateY(-3px);
     box-shadow: 0 8px 30px rgba(56, 53, 53, 0.979);
 }

@@ -14,7 +14,7 @@
   align-items: center;
   gap: 7px;
   padding: 8px 18px;
-  background: #0b6426;
+  background: #2d5a3d;
   color: #fff;
   border: none;
   border-radius: 8px;
@@ -24,7 +24,7 @@
   text-decoration: none;
   transition: background .2s;
 }
-.btn-login-cliente:hover { background: #094e1e; }
+.btn-login-cliente:hover { background: #0d6829; }
 
 .btn-afiliado-link {
   display: flex;
@@ -32,8 +32,8 @@
   gap: 7px;
   padding: 8px 18px;
   background: transparent;
-  color: #0b6426;
-  border: 2px solid #0b6426;
+  color: #2d5a3d;
+  border: 2px solid #0d6829;
   border-radius: 8px;
   font-size: 14px;
   font-weight: 600;
@@ -42,7 +42,7 @@
   transition: background .2s, color .2s;
 }
 .btn-afiliado-link:hover {
-  background: #0b6426;
+  background: #2d5a3d;
   color: #fff;
   text-decoration: none;
 }
@@ -137,10 +137,10 @@
   align-items: center;
   gap: 14px;
 }
-.card-res .ico         { font-size: 26px; color: #0b6426; min-width: 32px; text-align: center; }
+.card-res .ico         { font-size: 26px; color: #2d5a3d; min-width: 32px; text-align: center; }
 .card-res .info h5     { margin: 0 0 2px; font-size: 15px; }
 .card-res .info span   { font-size: 12px; color: #888; }
-.card-res .preco       { margin-left: auto; font-weight: 700; color: #0b6426; font-size: 16px; white-space: nowrap; }
+.card-res .preco       { margin-left: auto; font-weight: 700; color: #2d5a3d; font-size: 16px; white-space: nowrap; }
 
 .msg-cta {
   background: #f0f9f3;
@@ -186,7 +186,7 @@
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  background: #f0f9f3;
+  background: #f2f3f2;
   color: #2d5a3d;
   border-radius: 20px;
   padding: 5px 14px;
@@ -210,11 +210,11 @@
   gap: 16px;
 }
 .sm-icon {
-  background: linear-gradient(135deg, #000, #4a7c59);
+  background: linear-gradient(135deg, #2d5a3d, #4a7c59);
   border-radius: 14px;
   padding: 22px 14px;
   text-align: center;
-  color: #fff;
+  color: #ffffff;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -225,5 +225,5 @@
 .sm-icon i    { font-size: 1.8rem; }
 .sm-icon span { font-size: 12px; font-weight: 700; }
 @media (max-width: 768px) {
-  .saiba-mais-inner { grid-template-columns: 1fr; padding: 30px 22px; }
+  .saiba-mais-inner { grid-template-columns: 1fr; padding: 30px 22px; border-radius: 16px;border: 1px solid #d1e8d7; }
 }

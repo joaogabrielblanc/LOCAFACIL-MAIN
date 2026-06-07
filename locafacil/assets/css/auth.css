@@ -16,10 +16,10 @@ body {
 
 /* ── Fundo ── */
 body.bg-cliente {
-  background: linear-gradient(135deg, #0d2b18 0%, #000 45%, #1b4a2a 100%);
+  background: linear-gradient(135deg,#2d5a3d 25%, #4a7c59 75%, #7fb069 100%);
 }
 body.bg-afiliado {
-  background: linear-gradient(135deg, #050e08 0%, #0b2714 50%, #0f3319 100%);
+  background: linear-gradient(135deg,#2d5a3d 25%, #4a7c59 75%, #7fb069 100%);
 }
 
 /* ── Card ── */

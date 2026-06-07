@@ -7,11 +7,11 @@
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  --verde:      #2d5a3d;
+  --verde:      #4a7c59;
   --verde-m:    #4a7c59;
   --verde-l:    #7fb069;
   --verde-bg:   #f0f9f3;
-  --preto:      #000000;
+  --preto:      #2d5a3d;
   --texto:      #333;
   --cinza:      #666;
   --branco:     #fff;
@@ -24,7 +24,7 @@ body {
   font-family: 'Arial', sans-serif;
   line-height: 1.6;
   color: var(--texto);
-  background: linear-gradient(300deg, #1e3c2a 0%, #000000 25%, #4a7c59 75%, rgb(67,92,56) 100%);
+  background: linear-gradient(300deg,#1e3c2a 0%, #2d5a3d 25%, #4a7c59 75%, #7fb069 100%);
   min-height: 100vh;
 }
 

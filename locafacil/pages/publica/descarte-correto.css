@@ -2,7 +2,7 @@
 
 /* ── Impacto números ── */
 .impacto-card {
-  background: linear-gradient(135deg, #000, #4a7c59);
+  background: linear-gradient(135deg, #2d5a3d, #4a7c59);
   border-radius: 16px;
   padding: 36px 24px;
   text-align: center;
@@ -22,7 +22,7 @@
 .tipo-grid { display: flex; flex-direction: column; gap: 14px; }
 
 .tipo-card {
-  background: #fff;
+  background: #ececec;
   border-radius: 14px;
   border: 2px solid #e4ede4;
   overflow: hidden;
@@ -43,7 +43,7 @@
   width: 56px; height: 56px;
   border-radius: 13px;
   display: flex; align-items: center; justify-content: center;
-  font-size: 1.6rem; color: #fff;
+  font-size: 1.6rem; color: #ffffff;
   flex-shrink: 0;
   transition: transform .25s;
 }
@@ -51,7 +51,7 @@
 .tipo-info { flex: 1; }
 .tipo-info h3 { font-size: 1.15rem; color: #000; margin-bottom: 4px; }
 .tipo-tag { font-size: 12px; color: #888; font-weight: 600; }
-.tipo-arr { color: #4a7c59; font-size: 16px; transition: transform .28s; flex-shrink: 0; }
+.tipo-arr { color: #ffffff; font-size: 16px; transition: transform .28s; flex-shrink: 0; }
 .tipo-card.open .tipo-arr { transform: rotate(180deg); }
 
 .tipo-body {
