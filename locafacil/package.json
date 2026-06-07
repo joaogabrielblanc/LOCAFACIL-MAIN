@@ -1,32 +1,14 @@
 {
-  "name": "locafacil",
+  "name": "locafacil-frontend",
   "version": "1.0.0",
-  "description": "LocaFácil — Aluguel de caçambas. Front em localStorage (Vercel) + backend Node/Express/JWT/bcrypt (DBEI).",
-  "main": "server/index.js",
-  "directories": {
-    "lib": "lib"
-  },
+  "description": "LocaFácil — Aluguel de caçambas. Frontend 100% em localStorage (Vercel).",
+  "type": "module",
   "scripts": {
-    "start": "node server/index.js",
-    "dev": "node --watch server/index.js",
-    "test": "node server/tests/api.test.js"
+    "dev": "npx http-server . -p 8080 -o",
+    "serve": "npx http-server ."
   },
-  "keywords": [
-    "nodejs",
-    "express",
-    "jwt",
-    "bcrypt",
-    "rest-api",
-    "cacambas"
-  ],
+  "keywords": ["locafacil", "cacambas", "aluguel"],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "bcryptjs": "^3.0.3",
-    "cors": "^2.8.6",
-    "dotenv": "^17.4.2",
-    "express": "^5.2.1",
-    "express-validator": "^7.3.2",
-    "jsonwebtoken": "^9.0.3"
-  }
+  "private": false
 }
