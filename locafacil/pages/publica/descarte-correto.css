@@ -1,0 +1,144 @@
+/* descarte-correto.css */
+
+/* ── Impacto números ── */
+.impacto-card {
+  background: linear-gradient(135deg, #000, #4a7c59);
+  border-radius: 16px;
+  padding: 36px 24px;
+  text-align: center;
+  color: #fff;
+  transition: transform .3s, box-shadow .3s;
+}
+.impacto-card:hover { transform: translateY(-8px); box-shadow: 0 14px 36px rgba(0,0,0,.25); }
+.impacto-numero {
+  font-size: 2.8rem;
+  font-weight: 900;
+  margin-bottom: 12px;
+  line-height: 1;
+}
+.impacto-texto { font-size: .95rem; opacity: .88; line-height: 1.5; }
+
+/* ── Tipo cards (accordion) ── */
+.tipo-grid { display: flex; flex-direction: column; gap: 14px; }
+
+.tipo-card {
+  background: #fff;
+  border-radius: 14px;
+  border: 2px solid #e4ede4;
+  overflow: hidden;
+  transition: border-color .2s, box-shadow .2s;
+  cursor: pointer;
+}
+.tipo-card:hover     { border-color: #4a7c59; box-shadow: 0 6px 20px rgba(0,0,0,.08); }
+.tipo-card.open      { border-color: #2d5a3d; }
+
+.tipo-header {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 20px 24px;
+  user-select: none;
+}
+.tipo-icon {
+  width: 56px; height: 56px;
+  border-radius: 13px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.6rem; color: #fff;
+  flex-shrink: 0;
+  transition: transform .25s;
+}
+.tipo-card:hover .tipo-icon { transform: scale(1.08) rotate(-4deg); }
+.tipo-info { flex: 1; }
+.tipo-info h3 { font-size: 1.15rem; color: #000; margin-bottom: 4px; }
+.tipo-tag { font-size: 12px; color: #888; font-weight: 600; }
+.tipo-arr { color: #4a7c59; font-size: 16px; transition: transform .28s; flex-shrink: 0; }
+.tipo-card.open .tipo-arr { transform: rotate(180deg); }
+
+.tipo-body {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 24px;
+  transition: max-height .4s ease, padding .3s;
+}
+.tipo-card.open .tipo-body { max-height: 700px; padding: 0 24px 28px; }
+
+/* ── Pode / Não pode ── */
+.pode-nao {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+.pode, .nao-pode {
+  border-radius: 12px;
+  padding: 18px;
+}
+.pode    { background: #f0fdf4; border: 1.5px solid #bbf7d0; }
+.nao-pode{ background: #fef2f2; border: 1.5px solid #fecaca; }
+
+.pode h4, .nao-pode h4 {
+  font-size: 14px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 12px;
+}
+.pode h4    { color: #166534; }
+.pode h4 i  { color: #22c55e; }
+.nao-pode h4   { color: #991b1b; }
+.nao-pode h4 i { color: #ef4444; }
+
+.pode ul, .nao-pode ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.pode li, .nao-pode li { font-size: 13px; color: #444; display: flex; align-items: flex-start; gap: 6px; }
+.pode li::before    { content: '✓'; color: #22c55e; font-weight: 900; flex-shrink: 0; }
+.nao-pode li::before{ content: '✕'; color: #ef4444; font-weight: 900; flex-shrink: 0; }
+
+/* ── Dica ── */
+.dica-box {
+  background: #fefce8;
+  border: 1.5px solid #fde047;
+  border-radius: 10px;
+  padding: 13px 16px;
+  font-size: 13px;
+  color: #713f12;
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  line-height: 1.5;
+}
+.dica-box i { color: #f59e0b; margin-top: 1px; flex-shrink: 0; }
+
+/* ── Legislação ── */
+.lei-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 28px;
+  box-shadow: 0 4px 18px rgba(0,0,0,.07);
+  border-left: 5px solid #2d5a3d;
+  transition: transform .2s;
+}
+.lei-card:hover { transform: translateY(-4px); }
+.lei-num {
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  color: #4a7c59;
+  margin-bottom: 8px;
+}
+.lei-card h3 { font-size: 1.1rem; color: #000; margin-bottom: 10px; }
+.lei-card p  { font-size: .92rem; color: #555; line-height: 1.6; }
+
+/* ── Responsivo ── */
+@media (max-width: 640px) {
+  .pode-nao { grid-template-columns: 1fr; }
+  .tipo-header { gap: 12px; padding: 16px; }
+  .tipo-body.open { padding: 0 16px 20px; }
+  .impacto-numero { font-size: 2rem; }
+}

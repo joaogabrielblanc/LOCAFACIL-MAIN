@@ -1,0 +1,140 @@
+/* suporte.css — Estilos específicos da página de suporte */
+
+/* ── Tabs Clientes / Empresas ── */
+.suporte-tabs {
+  display: flex;
+  gap: 12px;
+  margin: 0 0 -1px;
+  padding: 0;
+}
+.stab {
+  padding: 13px 28px;
+  background: rgba(255,255,255,.18);
+  color: #fff;
+  border: 2px solid rgba(255,255,255,.3);
+  border-bottom: none;
+  border-radius: 12px 12px 0 0;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background .2s, color .2s;
+}
+.stab:hover  { background: rgba(255,255,255,.3); }
+.stab.active { background: rgba(255,255,255,.97); color: #2d5a3d; border-color: rgba(255,255,255,.97); }
+
+/* ── Canal card extras ── */
+.canal-info {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  color: #888;
+  margin-top: 14px;
+  padding: 8px 12px;
+  background: #f4f8f4;
+  border-radius: 8px;
+}
+.canal-info i { color: #4a7c59; }
+
+/* ── Formulário ── */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-bottom: 22px;
+}
+.form-field      { display: flex; flex-direction: column; gap: 7px; }
+.form-field.full { grid-column: 1 / -1; }
+.form-field label {
+  font-size: 13px;
+  font-weight: 700;
+  color: #444;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.form-field label i { color: #4a7c59; }
+.form-field input,
+.form-field select,
+.form-field textarea {
+  padding: 11px 14px;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+  background: #fafafa;
+  transition: border-color .2s, box-shadow .2s;
+  resize: vertical;
+}
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  border-color: #4a7c59;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(74,124,89,.1);
+}
+
+.form-success {
+  display: none;
+  margin-top: 16px;
+  background: #d4edda;
+  color: #155724;
+  border-radius: 10px;
+  padding: 13px 18px;
+  font-weight: 700;
+  font-size: 15px;
+  align-items: center;
+  gap: 9px;
+}
+.form-success.show { display: flex; }
+
+/* ── FAQ tabs ── */
+.faq-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+.faq-tab-btn {
+  padding: 9px 22px;
+  border: 2px solid #d1e8d7;
+  border-radius: 20px;
+  background: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  color: #555;
+  cursor: pointer;
+  transition: background .15s, color .15s, border-color .15s;
+}
+.faq-tab-btn.active,
+.faq-tab-btn:hover { background: #2d5a3d; color: #fff; border-color: #2d5a3d; }
+
+/* ── Atalhos portal ── */
+.atalho-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 28px 20px;
+  background: #f8faf8;
+  border: 2px solid #e4ede4;
+  border-radius: 14px;
+  text-decoration: none;
+  color: #333;
+  transition: border-color .2s, transform .2s, box-shadow .2s;
+  text-align: center;
+}
+.atalho-card:hover { border-color: #4a7c59; transform: translateY(-4px); box-shadow: 0 8px 22px rgba(0,0,0,.1); }
+.atalho-card i    { font-size: 2rem; color: #4a7c59; }
+.atalho-card span { font-size: 15px; font-weight: 800; color: #000; }
+.atalho-card small { font-size: 12px; color: #888; }
+
+/* ── Responsivo ── */
+@media (max-width: 640px) {
+  .form-grid { grid-template-columns: 1fr; }
+  .suporte-tabs { flex-direction: column; }
+  .stab { border-radius: 10px; border: 2px solid rgba(255,255,255,.3); }
+}

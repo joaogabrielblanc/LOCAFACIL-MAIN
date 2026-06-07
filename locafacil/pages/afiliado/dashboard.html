@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal Afiliado — LocaFácil</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/dashboard.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+<!-- ── Sidebar ── -->
+<aside class="sidebar">
+  <div class="s-logo"><i class="fas fa-recycle"></i><span>LocaFácil</span></div>
+  <nav>
+    <button class="nav-item active" onclick="showPage('overview',this)"><i class="fas fa-chart-line"></i><span> Visão Geral</span></button>
+    <button class="nav-item" onclick="showPage('pedidos',this)"><i class="fas fa-clipboard-list"></i><span> Pedidos</span></button>
+    <button class="nav-item" onclick="showPage('relatorio',this)"><i class="fas fa-chart-bar"></i><span> Relatórios</span></button>
+    <button class="nav-item" onclick="showPage('cacambas',this)"><i class="fas fa-dumpster"></i><span> Minhas Caçambas</span></button>
+    <button class="nav-item" id="navCobertura" onclick="showPage('cobertura',this)"><i class="fas fa-map-marked-alt"></i><span> Área de Entrega</span></button>
+    <button class="nav-item" onclick="location.href='../../index.html'"><i class="fas fa-home"></i><span> Ver Site</span></button>
+  </nav>
+  <div class="sidebar-footer">
+    <div class="sf-label">Empresa logada</div>
+    <div class="sf-name" id="empNome">—</div>
+    <a href="../cliente/login.html" class="btn-logout-sidebar" style="margin-bottom:8px;justify-content:center;">
+      <i class="fas fa-exchange-alt"></i><span> Trocar conta</span>
+    </a>
+    <button class="btn-logout-sidebar" onclick="sair()">
+      <i class="fas fa-sign-out-alt"></i><span> Sair</span>
+    </button>
+  </div>
+</aside>
+
+<!-- ── Main ── -->
+<div class="layout-with-sidebar">
+<main class="main">
+
+  <!-- VISÃO GERAL -->
+  <div class="page active" id="page-overview">
+    <div class="page-title">Visão Geral</div>
+    <div class="page-sub" id="subtituloEmp"></div>
+    <div class="stats-grid" id="statsGrid"></div>
+    <div class="charts-grid">
+      <div class="chart-box"><h3><i class="fas fa-chart-line"></i> Receita Mensal</h3><canvas id="chartReceita"></canvas></div>
+      <div class="chart-box"><h3><i class="fas fa-pie-chart"></i> Status dos Pedidos</h3><canvas id="chartStatus"></canvas></div>
+    </div>
+  </div>
+
+  <!-- PEDIDOS -->
+  <div class="page" id="page-pedidos">
+    <div class="page-title">Pedidos</div>
+    <div class="page-sub">Gerencie e atualize o andamento de cada pedido.</div>
+    <div class="box">
+      <div class="box-hd">
+        <h3><i class="fas fa-clipboard-list"></i> Todos os Pedidos</h3>
+        <select class="sel-filtro" id="filtroStatus" onchange="renderPedidos()">
+          <option value="">Todos</option>
+          <option value="pendente">Pendente</option>
+          <option value="a-caminho">A caminho</option>
+          <option value="entregue">Entregue</option>
+          <option value="concluido">Concluído</option>
+        </select>
+      </div>
+      <div class="tbl-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th><th>Caçamba</th><th>Data</th><th>Endereço</th><th>Valor</th>
+              <th>Status <span style="font-size:10px;color:#bbb;font-weight:500;">(clique para alterar)</span></th>
+            </tr>
+          </thead>
+          <tbody id="tbodyPedidos"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- RELATÓRIO -->
+  <div class="page" id="page-relatorio">
+    <div class="page-title">Relatórios de Vendas</div>
+    <div class="page-sub">Análise detalhada do desempenho da sua empresa.</div>
+    <div class="stats-grid" id="relStats"></div>
+    <div class="charts-grid">
+      <div class="chart-box"><h3><i class="fas fa-chart-bar"></i> Pedidos por Mês</h3><canvas id="chartPedMes"></canvas></div>
+      <div class="chart-box"><h3><i class="fas fa-chart-line"></i> Receita Acumulada</h3><canvas id="chartRecAcum"></canvas></div>
+    </div>
+    <div class="box">
+      <div class="box-hd"><h3><i class="fas fa-table"></i> Resumo Mensal</h3></div>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>Mês</th><th>Pedidos</th><th>Receita</th><th>Ticket Médio</th></tr></thead>
+          <tbody id="tbodyRel"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- CAÇAMBAS -->
+  <div class="page" id="page-cacambas">
+    <div class="page-title">Minhas Caçambas</div>
+    <div class="page-sub">Cadastre e anuncie suas caçambas. Elas aparecem para clientes cujo CEP corresponda à sua área de entrega.</div>
+    <div style="margin-bottom:20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+      <button class="btn-primary" onclick="abrirModal()"><i class="fas fa-plus"></i> Nova Caçamba</button>
+      <span id="alertaCobCacamba" style="font-size:13px;color:#d97706;display:none;align-items:center;gap:6px;">
+        <i class="fas fa-exclamation-triangle"></i>
+        Sem áreas de entrega.
+        <a onclick="showPage('cobertura',document.getElementById('navCobertura'))" style="color:var(--green);font-weight:800;cursor:pointer;">Cadastrar agora →</a>
+      </span>
+    </div>
+    <div class="cacamba-grid" id="cacambaGrid"></div>
+  </div>
+
+  <!-- ÁREA DE ENTREGA -->
+  <div class="page" id="page-cobertura">
+    <div class="page-title">Área de Entrega</div>
+    <div class="page-sub">Defina onde você entrega caçambas. Clientes só verão suas caçambas se o CEP deles estiver nessas regiões.</div>
+    <div class="box">
+      <div class="box-hd"><h3><i class="fas fa-map-marked-alt"></i> Regiões Cadastradas</h3></div>
+      <div class="info-box">
+        <strong>Como funciona:</strong> quando um cliente digita o CEP, consultamos via API dos Correios (ViaCEP) a cidade e estado correspondentes, e comparamos com as regiões abaixo. Se o CEP estiver coberto, suas caçambas aparecem para ele automaticamente.
+      </div>
+      <div class="cov-list" id="covList"></div>
+
+      <div class="add-box">
+        <h4><i class="fas fa-plus-circle"></i> Adicionar Região de Entrega</h4>
+        <div style="margin-bottom:18px;">
+          <label style="display:block;font-size:13px;font-weight:700;color:#444;margin-bottom:7px;">
+            <i class="fas fa-search" style="color:var(--green);margin-right:5px;"></i>Consultar CEP para preencher automaticamente
+          </label>
+          <div class="lookup-row">
+            <input type="text" id="cepLookup" class="fi" placeholder="Digite qualquer CEP da região" maxlength="9">
+            <button class="btn-lk" onclick="lookupCep()"><i class="fas fa-search"></i> Consultar</button>
+          </div>
+          <div class="lk-res" id="lkRes"></div>
+        </div>
+        <div class="g2">
+          <div class="full">
+            <label style="display:block;font-size:13px;font-weight:700;color:#444;margin-bottom:7px;">Cidade <span style="color:#c0392b;">*</span></label>
+            <input type="text" id="covCidade" class="fi" placeholder="Ex: Volta Redonda">
+          </div>
+          <div>
+            <label style="display:block;font-size:13px;font-weight:700;color:#444;margin-bottom:7px;">Estado <span style="color:#c0392b;">*</span></label>
+            <input type="text" id="covEstado" class="fi" placeholder="RJ" maxlength="2" style="text-transform:uppercase;">
+          </div>
+          <div>
+            <label style="display:block;font-size:13px;font-weight:700;color:#444;margin-bottom:7px;">Bairro <span style="color:#aaa;font-weight:400;">(opcional)</span></label>
+            <input type="text" id="covBairro" class="fi" placeholder="Ex: Centro">
+          </div>
+          <div>
+            <label style="display:block;font-size:13px;font-weight:700;color:#444;margin-bottom:7px;">CEP Início <span style="color:#aaa;font-weight:400;">(opcional)</span></label>
+            <input type="text" id="covIni" class="fi" placeholder="27200-000" maxlength="9">
+          </div>
+          <div>
+            <label style="display:block;font-size:13px;font-weight:700;color:#444;margin-bottom:7px;">CEP Fim <span style="color:#aaa;font-weight:400;">(opcional)</span></label>
+            <input type="text" id="covFim" class="fi" placeholder="27399-999" maxlength="9">
+          </div>
+        </div>
+        <button class="btn-add-cov" onclick="addCobertura()"><i class="fas fa-check"></i> Adicionar Região</button>
+      </div>
+    </div>
+  </div>
+
+</main>
+</div>
+
+<!-- ── Modal Caçamba ── -->
+<div class="modal-ov" id="modalCacamba">
+  <div class="modal-box">
+    <button class="modal-close" onclick="fecharModal()"><i class="fas fa-times"></i></button>
+    <h3 id="modalTitulo">Nova Caçamba</h3>
+    <input type="hidden" id="editId">
+
+    <div id="cobAlerta" class="alert-box" style="display:none;">
+      ⚠ Você ainda não tem áreas de entrega. A caçamba será salva, mas não aparecerá para clientes até você
+      <a onclick="fecharModal();showPage('cobertura',document.getElementById('navCobertura'))">cadastrar ao menos uma região →</a>
+    </div>
+    <div id="cobInfo" class="info-box" style="display:none;"></div>
+
+    <div class="mfield">
+      <label>Nome da Caçamba *</label>
+      <input type="text" id="fNome" placeholder="Ex: Caçamba Média — Entulho">
+    </div>
+    <div class="r2">
+      <div class="mfield">
+        <label>Tipo de Resíduo *</label>
+        <select id="fTipo">
+          <option value="obra">Obra / Entulho</option>
+          <option value="organico">Orgânicos</option>
+          <option value="moveis">Móveis e Objetos</option>
+          <option value="gesso">Gesso</option>
+          <option value="vidro">Vidro</option>
+          <option value="plastico">Plástico</option>
+        </select>
+      </div>
+      <div class="mfield">
+        <label>Capacidade</label>
+        <input type="text" id="fCap" placeholder="Ex: 5m³">
+      </div>
+    </div>
+    <div class="r2">
+      <div class="mfield">
+        <label>Dimensões (L × L × A)</label>
+        <input type="text" id="fDim" placeholder="2,40 × 1,50 × 1,00m">
+      </div>
+      <div class="mfield">
+        <label>Peso Máximo</label>
+        <input type="text" id="fPeso" placeholder="3 ton">
+      </div>
+    </div>
+    <div class="mfield">
+      <label>Preço por semana (R$) *</label>
+      <input type="number" id="fPreco" placeholder="0.00" min="0" step="0.01">
+    </div>
+    <div class="mfield">
+      <label>Descrição</label>
+      <textarea id="fDesc" rows="3" placeholder="Para que serve, o que aceita, restrições..."></textarea>
+    </div>
+    <div class="mfield">
+      <label>URL da Imagem (opcional)</label>
+      <input type="url" id="fImg" placeholder="https://...">
+    </div>
+    <div class="mfield">
+      <label style="display:flex;align-items:center;justify-content:space-between;">
+        <span>Regiões de Entrega</span>
+        <a onclick="fecharModal();showPage('cobertura',document.getElementById('navCobertura'))" style="font-size:12px;color:var(--green);font-weight:700;cursor:pointer;"><i class="fas fa-edit"></i> Gerenciar</a>
+      </label>
+      <div class="cov-tags" id="cobTags"></div>
+      <div style="font-size:12px;color:#aaa;margin-top:4px;">As regiões se aplicam a todas as suas caçambas.</div>
+    </div>
+    <div class="mfield" style="display:flex;align-items:center;gap:10px;">
+      <input type="checkbox" id="fDisp" checked style="width:18px;height:18px;accent-color:var(--green);">
+      <label for="fDisp" style="font-size:14px;cursor:pointer;font-weight:600;">Disponível para aluguel imediato</label>
+    </div>
+    <div class="modal-actions">
+      <button class="btn-cancelar" onclick="fecharModal()">Cancelar</button>
+      <button class="btn-salvar" onclick="salvarCacamba()"><i class="fas fa-save"></i> Salvar Caçamba</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="../../lib/db.js"></script>
+<script src="../../assets/js/dashboard-afiliado.js"></script>
+</body>
+</html>

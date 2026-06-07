@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal Afiliado — LocaFácil</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/auth.css">
+</head>
+<body class="bg-afiliado">
+
+<div class="auth-card">
+  <a href="../../index.html" class="back-link"><i class="fas fa-arrow-left"></i> Voltar ao início</a>
+
+  <div class="auth-logo">
+    <i class="fas fa-recycle"></i>
+    <span>LocaFácil</span>
+  </div>
+  <span class="emp-badge"><i class="fas fa-building"></i> &nbsp;Portal de Empresas Afiliadas</span>
+
+  <div class="auth-tabs">
+    <button class="auth-tab active" onclick="setTab('login')">Entrar</button>
+    <button class="auth-tab" onclick="setTab('cadastro')">Cadastrar empresa</button>
+  </div>
+
+  <!-- ── Painel Login ── -->
+  <div id="panelLogin">
+    <div class="auth-title">Acesso Empresarial</div>
+    <div class="auth-sub">Gerencie pedidos, caçambas e relatórios da sua empresa.</div>
+
+    <div class="demo-box"><i class="fas fa-info-circle"></i> <span><b>Demo:</b> afiliado@demo.com · senha: 123456</span></div>
+
+    <div class="error-msg" id="errLogin"><i class="fas fa-exclamation-circle"></i><span></span></div>
+
+    <div class="field" id="f-lEmail">
+      <label>E-mail</label>
+      <div class="input-wrap">
+        <i class="fas fa-envelope"></i>
+        <input type="email" id="lEmail" placeholder="empresa@email.com" autocomplete="email" inputmode="email">
+        <i class="fas val-icon"></i>
+      </div>
+      <div class="field-hint"></div>
+    </div>
+    <div class="field" id="f-lSenha">
+      <label>Senha</label>
+      <div class="input-wrap">
+        <i class="fas fa-lock"></i>
+        <input type="password" id="lSenha" placeholder="Digite sua senha" autocomplete="current-password">
+        <button type="button" class="toggle-senha" onclick="toggleSenha(this)" tabindex="-1" aria-label="Mostrar senha"><i class="fas fa-eye"></i></button>
+      </div>
+      <div class="field-hint"></div>
+    </div>
+
+    <button class="btn-auth" onclick="login()">
+      <i class="fas fa-sign-in-alt"></i> Acessar o portal
+    </button>
+
+    <div class="auth-footer">
+      Ainda não é parceiro? <button onclick="setTab('cadastro')">Cadastre sua empresa</button>
+    </div>
+  </div>
+
+  <!-- ── Painel Cadastro ── -->
+  <div id="panelCadastro" style="display:none;">
+    <div class="auth-title">Cadastrar Empresa</div>
+    <div class="auth-sub">Torne-se afiliado e anuncie suas caçambas para clientes da região.</div>
+
+    <div class="error-msg" id="errCad"><i class="fas fa-exclamation-circle"></i><span></span></div>
+
+    <div class="field" id="f-cEmpresa">
+      <label>Nome da Empresa</label>
+      <div class="input-wrap">
+        <i class="fas fa-building"></i>
+        <input type="text" id="cEmpresa" placeholder="Caçambas XYZ Ltda.">
+        <i class="fas val-icon"></i>
+      </div>
+      <div class="field-hint"></div>
+    </div>
+    <div class="field" id="f-cCnpj">
+      <label>CNPJ</label>
+      <div class="input-wrap">
+        <i class="fas fa-id-card"></i>
+        <input type="text" id="cCnpj" placeholder="00.000.000/0001-00" maxlength="18" inputmode="numeric">
+        <i class="fas val-icon"></i>
+      </div>
+      <div class="field-hint"></div>
+    </div>
+    <div class="field" id="f-cEmail">
+      <label>E-mail</label>
+      <div class="input-wrap">
+        <i class="fas fa-envelope"></i>
+        <input type="email" id="cEmail" placeholder="contato@empresa.com" autocomplete="email" inputmode="email">
+        <i class="fas val-icon"></i>
+      </div>
+      <div class="field-hint"></div>
+    </div>
+    <div class="field" id="f-cTel">
+      <label>Telefone</label>
+      <div class="input-wrap">
+        <i class="fas fa-phone"></i>
+        <input type="tel" id="cTel" placeholder="(00) 00000-0000" maxlength="15" inputmode="numeric">
+        <i class="fas val-icon"></i>
+      </div>
+      <div class="field-hint"></div>
+    </div>
+    <div class="row2">
+      <div class="field" id="f-cCidade">
+        <label>Cidade</label>
+        <div class="input-wrap">
+          <i class="fas fa-city"></i>
+          <input type="text" id="cCidade" placeholder="Volta Redonda">
+        </div>
+      </div>
+      <div class="field" id="f-cEstado">
+        <label>Estado</label>
+        <div class="input-wrap">
+          <i class="fas fa-map"></i>
+          <input type="text" id="cEstado" placeholder="RJ" maxlength="2" style="text-transform:uppercase;">
+        </div>
+      </div>
+    </div>
+    <div class="field" id="f-cSenha">
+      <label>Senha</label>
+      <div class="input-wrap">
+        <i class="fas fa-lock"></i>
+        <input type="password" id="cSenha" placeholder="Mínimo 6 caracteres" autocomplete="new-password">
+        <button type="button" class="toggle-senha" onclick="toggleSenha(this)" tabindex="-1" aria-label="Mostrar senha"><i class="fas fa-eye"></i></button>
+      </div>
+      <div class="strength-bar" id="bar-cSenha"><span></span></div>
+      <div class="field-hint"></div>
+    </div>
+
+    <button class="btn-auth" onclick="cadastrar()">
+      <i class="fas fa-building"></i> Cadastrar minha empresa
+    </button>
+
+    <div class="auth-footer">
+      Já tem conta? <button onclick="setTab('login')">Entrar</button>
+    </div>
+  </div>
+</div>
+
+<script src="../../lib/db.js"></script>
+<script src="../../assets/js/validacao.js"></script>
+<script src="../../assets/js/login-afiliado.js"></script>
+</body>
+</html>

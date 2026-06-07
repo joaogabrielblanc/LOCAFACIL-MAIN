@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Cliente — LocaFácil</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/auth.css">
+</head>
+<body class="bg-cliente">
+
+<div class="auth-card">
+  <a href="../../index.html" class="back-link"><i class="fas fa-arrow-left"></i> Voltar ao início</a>
+
+  <div class="auth-logo">
+    <i class="fas fa-recycle"></i>
+    <span>LocaFácil</span>
+  </div>
+
+  <div class="auth-tabs">
+    <button class="auth-tab active" onclick="setTab('login')">Entrar</button>
+    <button class="auth-tab" onclick="setTab('cadastro')">Criar conta</button>
+  </div>
+
+  <!-- ── Painel Login ── -->
+  <div id="panelLogin">
+    <div class="auth-title">Bem-vindo de volta!</div>
+    <div class="auth-sub">Entre para ver seus pedidos e buscar caçambas.</div>
+
+    <div class="demo-box"><i class="fas fa-info-circle"></i> <span><b>Demo:</b> cliente@demo.com · senha: 123456</span></div>
+
+    <div class="error-msg" id="errLogin"><i class="fas fa-exclamation-circle"></i><span></span></div>
+
+    <div class="field" id="f-loginEmail">
+      <label>E-mail</label>
+      <div class="input-wrap">
+        <i class="fas fa-envelope"></i>
+        <input type="email" id="loginEmail" placeholder="seu@email.com" autocomplete="email" inputmode="email">
+        <i class="fas val-icon"></i>
+      </div>
+      <div class="field-hint"></div>
+    </div>
+    <div class="field" id="f-loginSenha">
+      <label>Senha</label>
+      <div class="input-wrap">
+        <i class="fas fa-lock"></i>
+        <input type="password" id="loginSenha" placeholder="Digite sua senha" autocomplete="current-password">
+        <button type="button" class="toggle-senha" onclick="toggleSenha(this)" tabindex="-1" aria-label="Mostrar senha"><i class="fas fa-eye"></i></button>
+      </div>
+      <div class="field-hint"></div>
+    </div>
+
+    <button class="btn-auth" onclick="fazerLogin()">
+      <i class="fas fa-sign-in-alt"></i> Entrar na minha conta
+    </button>
+
+    <div class="divider">ou continue com</div>
+    <div class="social-row">
+      <button class="btn-social"><i class="fab fa-google ico-google"></i> Google</button>
+      <button class="btn-social"><i class="fab fa-facebook-f ico-fb"></i> Facebook</button>
+    </div>
+
+    <div class="auth-footer">
+      Não tem conta? <button onclick="setTab('cadastro')">Cadastre-se grátis</button>
+    </div>
+  </div>
+
+  <!-- ── Painel Cadastro ── -->
+  <div id="panelCadastro" style="display:none;">
+    <div class="auth-title">Crie sua conta</div>
+    <div class="auth-sub">Rápido e grátis. Busque caçambas perto de você.</div>
+
+    <div class="error-msg" id="errCad"><i class="fas fa-exclamation-circle"></i><span></span></div>
+
+    <div class="field" id="f-cadNome">
+      <label>Nome completo</label>
+      <div class="input-wrap">
+        <i class="fas fa-user"></i>
+        <input type="text" id="cadNome" placeholder="Seu nome completo" autocomplete="name">
+        <i class="fas val-icon"></i>
+      </div>
+      <div class="field-hint"></div>
+    </div>
+    <div class="field" id="f-cadEmail">
+      <label>E-mail</label>
+      <div class="input-wrap">
+        <i class="fas fa-envelope"></i>
+        <input type="email" id="cadEmail" placeholder="seu@email.com" autocomplete="email" inputmode="email">
+        <i class="fas val-icon"></i>
+      </div>
+      <div class="field-hint"></div>
+    </div>
+    <div class="row2">
+      <div class="field" id="f-cadTel">
+        <label>Telefone</label>
+        <div class="input-wrap">
+          <i class="fas fa-phone"></i>
+          <input type="tel" id="cadTel" placeholder="(00) 00000-0000" maxlength="15" inputmode="numeric">
+          <i class="fas val-icon"></i>
+        </div>
+        <div class="field-hint"></div>
+      </div>
+      <div class="field" id="f-cadCep">
+        <label>CEP</label>
+        <div class="input-wrap">
+          <i class="fas fa-map-marker-alt"></i>
+          <input type="text" id="cadCep" placeholder="00000-000" maxlength="9" inputmode="numeric">
+          <i class="fas val-icon"></i>
+        </div>
+        <div class="field-hint"></div>
+      </div>
+    </div>
+    <div class="field" id="f-cadSenha">
+      <label>Senha</label>
+      <div class="input-wrap">
+        <i class="fas fa-lock"></i>
+        <input type="password" id="cadSenha" placeholder="Mínimo 6 caracteres" autocomplete="new-password">
+        <button type="button" class="toggle-senha" onclick="toggleSenha(this)" tabindex="-1" aria-label="Mostrar senha"><i class="fas fa-eye"></i></button>
+      </div>
+      <div class="strength-bar" id="bar-cadSenha"><span></span></div>
+      <div class="field-hint"></div>
+    </div>
+
+    <button class="btn-auth" onclick="cadastrar()">
+      <i class="fas fa-user-plus"></i> Criar minha conta
+    </button>
+
+    <div class="auth-footer">
+      Já tem conta? <button onclick="setTab('login')">Entrar</button>
+    </div>
+  </div>
+</div>
+
+<script src="../../lib/db.js"></script>
+<script src="../../assets/js/validacao.js"></script>
+<script src="../../assets/js/login-cliente.js"></script>
+</body>
+</html>

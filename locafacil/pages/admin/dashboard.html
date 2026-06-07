@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel Admin — LocaFácil</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body class="dash-body">
+
+<!-- ── Sidebar ── -->
+<aside class="sidebar">
+  <div class="s-logo">
+    <i class="fas fa-recycle"></i>
+    <span>LocaFácil</span>
+  </div>
+  <div class="s-badge">Admin</div>
+  <nav>
+    <button class="nav-item active" data-page="overview"  onclick="nav(this)"><i class="fas fa-chart-pie"></i><span>Visão Geral</span></button>
+    <button class="nav-item"        data-page="clientes"  onclick="nav(this)"><i class="fas fa-users"></i><span>Clientes</span></button>
+    <button class="nav-item"        data-page="afiliados" onclick="nav(this)"><i class="fas fa-building"></i><span>Empresas</span></button>
+    <button class="nav-item"        data-page="pedidos"   onclick="nav(this)"><i class="fas fa-clipboard-list"></i><span>Pedidos</span></button>
+    <button class="nav-item"        data-page="banco"     onclick="nav(this)"><i class="fas fa-database"></i><span>Banco de Dados</span></button>
+    <button class="nav-item"        onclick="location.href='../../index.html'"><i class="fas fa-home"></i><span>Ver Site</span></button>
+  </nav>
+  <div class="s-footer">
+    <div class="s-user" id="sUser">—</div>
+    <button class="btn-sair" onclick="AdminAPI.logout()"><i class="fas fa-sign-out-alt"></i><span>Sair</span></button>
+  </div>
+</aside>
+
+<!-- ── Main ── -->
+<main class="main">
+
+  <!-- ── VISÃO GERAL ── -->
+  <section class="page active" id="page-overview">
+    <div class="page-hd">
+      <h1>Visão Geral</h1>
+      <p>Resumo completo da plataforma em tempo real.</p>
+    </div>
+    <div class="stats-row" id="statsRow"></div>
+    <div class="grid-2" style="margin-top:20px;">
+      <div class="panel">
+        <div class="panel-hd"><h3><i class="fas fa-users"></i> Últimos Clientes</h3></div>
+        <div id="ultClientes"></div>
+      </div>
+      <div class="panel">
+        <div class="panel-hd"><h3><i class="fas fa-building"></i> Últimas Empresas</h3></div>
+        <div id="ultAfiliados"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CLIENTES ── -->
+  <section class="page" id="page-clientes">
+    <div class="page-hd">
+      <h1>Clientes <span class="count-badge" id="countClientes"></span></h1>
+      <p>Gerencie todos os clientes cadastrados na plataforma.</p>
+    </div>
+    <div class="toolbar">
+      <input type="text" class="search-input" id="searchClientes" placeholder="Buscar por nome ou e-mail..." oninput="filtrarClientes()">
+    </div>
+    <div class="panel">
+      <table>
+        <thead><tr><th>Nome</th><th>E-mail</th><th>Telefone</th><th>CEP</th><th>Pedidos</th><th>Cadastro</th><th>Status</th><th>Ações</th></tr></thead>
+        <tbody id="tbClientes"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ── AFILIADOS ── -->
+  <section class="page" id="page-afiliados">
+    <div class="page-hd">
+      <h1>Empresas Afiliadas <span class="count-badge" id="countAfiliados"></span></h1>
+      <p>Gerencie todas as empresas cadastradas como afiliadas.</p>
+    </div>
+    <div class="toolbar">
+      <input type="text" class="search-input" id="searchAfiliados" placeholder="Buscar por empresa ou e-mail..." oninput="filtrarAfiliados()">
+    </div>
+    <div class="panel">
+      <table>
+        <thead><tr><th>Empresa</th><th>CNPJ</th><th>E-mail</th><th>Cidade/UF</th><th>Caçambas</th><th>Pedidos</th><th>Cadastro</th><th>Status</th><th>Ações</th></tr></thead>
+        <tbody id="tbAfiliados"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ── PEDIDOS ── -->
+  <section class="page" id="page-pedidos">
+    <div class="page-hd">
+      <h1>Todos os Pedidos <span class="count-badge" id="countPedidos"></span></h1>
+      <p>Visão global de todos os pedidos da plataforma.</p>
+    </div>
+    <div class="toolbar">
+      <input type="text" class="search-input" id="searchPedidos" placeholder="Buscar por cliente ou empresa..." oninput="filtrarPedidos()">
+      <select class="sel-filtro" id="filtroStatusPedido" onchange="filtrarPedidos()">
+        <option value="">Todos os status</option>
+        <option value="pendente">Pendente</option>
+        <option value="a-caminho">A caminho</option>
+        <option value="entregue">Entregue</option>
+        <option value="concluido">Concluído</option>
+      </select>
+    </div>
+    <div class="panel">
+      <table>
+        <thead><tr><th>#</th><th>Cliente</th><th>Empresa</th><th>Caçamba</th><th>Data</th><th>Valor</th><th>Status</th></tr></thead>
+        <tbody id="tbPedidos"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ── BANCO DE DADOS ── -->
+  <section class="page" id="page-banco">
+    <div class="page-hd">
+      <h1>Banco de Dados</h1>
+      <p>Visualize e exporte os dados armazenados no <code>localStorage</code> do navegador.</p>
+    </div>
+    <div class="db-tabs">
+      <button class="db-tab active" onclick="setDbTab('clientes',this)">Clientes</button>
+      <button class="db-tab" onclick="setDbTab('afiliados',this)">Empresas</button>
+      <button class="db-tab" onclick="setDbTab('pedidos',this)">Pedidos</button>
+      <button class="db-tab" onclick="setDbTab('cacambas',this)">Caçambas</button>
+    </div>
+    <div class="panel">
+      <div class="panel-hd">
+        <h3 id="dbTabTitle">Registros</h3>
+        <button class="btn-export" onclick="AdminAPI.exportar()">
+          <i class="fas fa-download"></i> Exportar JSON
+        </button>
+      </div>
+      <pre id="dbViewer" class="db-viewer">Carregando...</pre>
+    </div>
+  </section>
+
+</main>
+
+<!-- ── Modal Editar ── -->
+<div class="modal-ov" id="modalEdit">
+  <div class="modal-box">
+    <button class="modal-close" onclick="fecharModal()"><i class="fas fa-times"></i></button>
+    <h3 id="modalTitulo">Editar</h3>
+    <input type="hidden" id="editId">
+    <input type="hidden" id="editTipo">
+    <div id="modalBody"></div>
+    <div class="modal-actions">
+      <button class="btn-cancelar" onclick="fecharModal()">Cancelar</button>
+      <button class="btn-salvar"   onclick="salvar()"><i class="fas fa-save"></i> Salvar</button>
+    </div>
+    <div class="modal-success" id="modalSuccess" style="display:none;"></div>
+  </div>
+</div>
+
+<!-- ── Modal Confirmar Delete ── -->
+<div class="modal-ov" id="modalDel">
+  <div class="modal-box" style="max-width:400px;text-align:center;">
+    <div style="font-size:48px;margin-bottom:16px;">🗑️</div>
+    <h3 id="delTitulo">Confirmar exclusão</h3>
+    <p id="delMsg" style="color:#666;margin:12px 0 24px;font-size:14px;"></p>
+    <div class="modal-actions" style="justify-content:center;">
+      <button class="btn-cancelar" onclick="fecharDel()">Cancelar</button>
+      <button class="btn-deletar"  id="btnConfDel">Excluir</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="../../lib/db.js"></script>
+<script src="admin-api.js"></script>
+<script src="admin-dashboard.js"></script>
+</body>
+</html>

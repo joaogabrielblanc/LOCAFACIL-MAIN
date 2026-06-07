@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Suporte — LocaFácil</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/paginas.css">
+  <link rel="stylesheet" href="suporte.css">
+  <link rel="stylesheet" href="../../assets/css/menu-mobile.css">
+</head>
+<body>
+
+<!-- ── Header ── -->
+<header class="header">
+  <div class="header-container">
+    <a href="../../index.html" class="logo">
+      <i class="fas fa-recycle"></i> LocaFácil
+    </a>
+    <nav class="nav-menu">
+      <ul class="nav-links">
+        <li><a href="../../index.html">Início</a></li>
+        <li><a href="../../index.html#services">Serviços</a></li>
+        <li><a href="descarte-correto.html">Descarte Correto</a></li>
+        <li><a href="suporte.html" class="active">Suporte</a></li>
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <a href="../cliente/login.html" class="btn-login-cliente" id="btnHeaderLogin">
+        <i class="fas fa-user"></i><span id="headerLoginTxt">Entrar</span>
+      </a>
+      <a href="../afiliado/login.html" class="btn-afiliado-link">
+        <i class="fas fa-building"></i> Sou Empresa
+      </a>
+    </div>
+    <div class="mobile-menu-toggle"><i class="fas fa-bars"></i></div>
+  </div>
+</header>
+
+<!-- ── Hero ── -->
+<section class="page-hero">
+  <div class="hero-tag"><i class="fas fa-headset"></i> &nbsp;Central de Suporte</div>
+  <h1>Como podemos ajudar?</h1>
+  <p>Atendimento rápido para clientes e empresas. Escolha o canal mais conveniente ou consulte nossas perguntas frequentes.</p>
+</section>
+
+<!-- ── Tabs Clientes / Empresas ── -->
+<div class="container" style="margin-bottom: 0; padding-bottom: 0;">
+  <div class="suporte-tabs">
+    <button class="stab active" onclick="setTab('clientes', this)">
+      <i class="fas fa-user"></i> Para Clientes
+    </button>
+    <button class="stab" onclick="setTab('empresas', this)">
+      <i class="fas fa-building"></i> Para Empresas
+    </button>
+  </div>
+</div>
+
+<!-- ── CANAIS DE ATENDIMENTO ── -->
+<section class="section-panel" id="painelClientes">
+  <div class="section-panel-title">Canais de Atendimento — Clientes</div>
+  <div class="section-panel-sub">Estamos disponíveis por vários canais. Escolha o que preferir.</div>
+
+  <div class="grid-3">
+    <div class="card canal-card">
+      <div class="card-icon" style="background: linear-gradient(135deg,#000,#25d366);">
+        <i class="fab fa-whatsapp"></i>
+      </div>
+      <h3>WhatsApp</h3>
+      <p>Fale com nossa equipe em tempo real. Resposta em até 5 minutos durante o horário comercial.</p>
+      <div class="canal-info"><i class="fas fa-clock"></i> Seg–Sáb, 07h–19h</div>
+      <a href="https://wa.me/5524999999999" target="_blank" class="btn-green" style="margin-top:18px;width:100%;justify-content:center;">
+        <i class="fab fa-whatsapp"></i> Iniciar conversa
+      </a>
+    </div>
+
+    <div class="card canal-card">
+      <div class="card-icon" style="background: linear-gradient(135deg,#000,#4a7c59);">
+        <i class="fas fa-envelope"></i>
+      </div>
+      <h3>E-mail</h3>
+      <p>Para dúvidas detalhadas, reclamações ou solicitações formais. Respondemos em até 24h úteis.</p>
+      <div class="canal-info"><i class="fas fa-clock"></i> Resposta em até 1 dia útil</div>
+      <a href="mailto:suporte@locafacil.com" class="btn-green" style="margin-top:18px;width:100%;justify-content:center;">
+        <i class="fas fa-envelope"></i> Enviar e-mail
+      </a>
+    </div>
+
+    <div class="card canal-card">
+      <div class="card-icon" style="background: linear-gradient(135deg,#000,#7fb069);">
+        <i class="fas fa-phone"></i>
+      </div>
+      <h3>Telefone</h3>
+      <p>Para urgências, fale diretamente com um atendente. Sem robôs, atendimento humanizado.</p>
+      <div class="canal-info"><i class="fas fa-clock"></i> Seg–Sex, 08h–18h</div>
+      <a href="tel:+552499999999" class="btn-green" style="margin-top:18px;width:100%;justify-content:center;">
+        <i class="fas fa-phone"></i> (24) 9999-9999
+      </a>
+    </div>
+  </div>
+
+  <!-- Formulário de contato -->
+  <div class="form-suporte" style="margin-top:48px;">
+    <h3 style="font-size:1.4rem;color:#000;margin-bottom:8px;">Enviar Mensagem</h3>
+    <p style="color:#666;margin-bottom:28px;">Preencha o formulário e retornaremos em breve.</p>
+    <div class="form-grid">
+      <div class="form-field">
+        <label><i class="fas fa-user"></i> Nome completo</label>
+        <input type="text" placeholder="Seu nome">
+      </div>
+      <div class="form-field">
+        <label><i class="fas fa-envelope"></i> E-mail</label>
+        <input type="email" placeholder="seu@email.com">
+      </div>
+      <div class="form-field">
+        <label><i class="fas fa-phone"></i> Telefone</label>
+        <input type="tel" placeholder="(00) 00000-0000">
+      </div>
+      <div class="form-field">
+        <label><i class="fas fa-tag"></i> Assunto</label>
+        <select>
+          <option>Dúvida sobre pedido</option>
+          <option>Problema com entrega</option>
+          <option>Cancelamento</option>
+          <option>Pagamento</option>
+          <option>Outro</option>
+        </select>
+      </div>
+      <div class="form-field full">
+        <label><i class="fas fa-comment"></i> Mensagem</label>
+        <textarea placeholder="Descreva sua dúvida ou problema em detalhes..." rows="5"></textarea>
+      </div>
+    </div>
+    <button class="btn-green" onclick="enviarForm(this)">
+      <i class="fas fa-paper-plane"></i> Enviar mensagem
+    </button>
+    <div class="form-success" id="formSuccess">
+      <i class="fas fa-check-circle"></i> Mensagem enviada! Retornaremos em breve.
+    </div>
+  </div>
+</section>
+
+<!-- ── PAINEL EMPRESAS ── -->
+<section class="section-panel" id="painelEmpresas" style="display:none;">
+  <div class="section-panel-title">Suporte para Empresas Afiliadas</div>
+  <div class="section-panel-sub">Somos parceiros do seu negócio. Conte com nossa equipe dedicada a afiliados.</div>
+
+  <div class="grid-3">
+    <div class="card canal-card">
+      <div class="card-icon" style="background: linear-gradient(135deg,#000,#25d366);">
+        <i class="fab fa-whatsapp"></i>
+      </div>
+      <h3>WhatsApp Empresarial</h3>
+      <p>Linha dedicada para afiliados. Suporte prioritário para questões operacionais e técnicas do portal.</p>
+      <div class="canal-info"><i class="fas fa-clock"></i> Seg–Sáb, 07h–20h</div>
+      <a href="https://wa.me/5524988888888" target="_blank" class="btn-green" style="margin-top:18px;width:100%;justify-content:center;">
+        <i class="fab fa-whatsapp"></i> Falar com suporte
+      </a>
+    </div>
+
+    <div class="card canal-card">
+      <div class="card-icon" style="background: linear-gradient(135deg,#000,#4a7c59);">
+        <i class="fas fa-envelope"></i>
+      </div>
+      <h3>E-mail Parceiros</h3>
+      <p>Para contratos, documentação, integração de sistema, faturas e questões administrativas.</p>
+      <div class="canal-info"><i class="fas fa-clock"></i> Resposta em até 4h úteis</div>
+      <a href="mailto:parceiros@locafacil.com" class="btn-green" style="margin-top:18px;width:100%;justify-content:center;">
+        <i class="fas fa-envelope"></i> parceiros@locafacil.com
+      </a>
+    </div>
+
+    <div class="card canal-card">
+      <div class="card-icon" style="background: linear-gradient(135deg,#000,#7fb069);">
+        <i class="fas fa-user-tie"></i>
+      </div>
+      <h3>Gerente de Conta</h3>
+      <p>Cada empresa afiliada tem um gerente dedicado. Agende uma reunião para alinhamento estratégico.</p>
+      <div class="canal-info"><i class="fas fa-clock"></i> Agendamento em até 24h</div>
+      <a href="mailto:parceiros@locafacil.com?subject=Solicitar reunião com gerente" class="btn-green" style="margin-top:18px;width:100%;justify-content:center;">
+        <i class="fas fa-calendar"></i> Agendar reunião
+      </a>
+    </div>
+  </div>
+
+  <!-- Acesso rápido ao portal -->
+  <div class="acesso-rapido" style="margin-top:40px;">
+    <h3 style="font-size:1.3rem;color:#000;margin-bottom:20px;"><i class="fas fa-bolt" style="color:#4a7c59;margin-right:8px;"></i>Acesso Rápido ao Portal</h3>
+    <div class="grid-3">
+      <a href="../afiliado/dashboard.html" class="atalho-card">
+        <i class="fas fa-chart-line"></i>
+        <span>Meu Dashboard</span>
+        <small>Ver pedidos e relatórios</small>
+      </a>
+      <a href="../afiliado/dashboard.html" class="atalho-card">
+        <i class="fas fa-dumpster"></i>
+        <span>Minhas Caçambas</span>
+        <small>Gerenciar anúncios</small>
+      </a>
+      <a href="../afiliado/dashboard.html" class="atalho-card">
+        <i class="fas fa-map-marked-alt"></i>
+        <span>Área de Entrega</span>
+        <small>Configurar cobertura</small>
+      </a>
+    </div>
+  </div>
+
+  <!-- Formulário empresas -->
+  <div class="form-suporte" style="margin-top:48px;">
+    <h3 style="font-size:1.4rem;color:#000;margin-bottom:8px;">Abrir Chamado</h3>
+    <p style="color:#666;margin-bottom:28px;">Para questões técnicas ou operacionais do portal afiliado.</p>
+    <div class="form-grid">
+      <div class="form-field">
+        <label><i class="fas fa-building"></i> Nome da Empresa</label>
+        <input type="text" placeholder="Sua empresa">
+      </div>
+      <div class="form-field">
+        <label><i class="fas fa-envelope"></i> E-mail</label>
+        <input type="email" placeholder="contato@empresa.com">
+      </div>
+      <div class="form-field">
+        <label><i class="fas fa-tag"></i> Categoria</label>
+        <select>
+          <option>Problema técnico no portal</option>
+          <option>Dúvida sobre relatórios</option>
+          <option>Cadastro de caçambas</option>
+          <option>Área de entrega / CEP</option>
+          <option>Financeiro / comissões</option>
+          <option>Outro</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label><i class="fas fa-exclamation-circle"></i> Prioridade</label>
+        <select>
+          <option>Normal</option>
+          <option>Alta — impacta operação</option>
+          <option>Urgente — sistema fora do ar</option>
+        </select>
+      </div>
+      <div class="form-field full">
+        <label><i class="fas fa-comment"></i> Descrição</label>
+        <textarea placeholder="Descreva o problema ou dúvida com o máximo de detalhes..." rows="5"></textarea>
+      </div>
+    </div>
+    <button class="btn-green" onclick="enviarForm(this)">
+      <i class="fas fa-paper-plane"></i> Abrir chamado
+    </button>
+    <div class="form-success" id="formSuccessEmp">
+      <i class="fas fa-check-circle"></i> Chamado aberto! Nossa equipe retornará em breve.
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ── -->
+<section class="section-panel">
+  <div class="section-panel-title">Perguntas Frequentes</div>
+  <div class="section-panel-sub">Respostas rápidas para as dúvidas mais comuns.</div>
+
+  <div class="faq-tabs">
+    <button class="faq-tab-btn active" onclick="setFaqTab('faq-cli', this)">Clientes</button>
+    <button class="faq-tab-btn" onclick="setFaqTab('faq-emp', this)">Empresas</button>
+  </div>
+
+  <!-- FAQ Clientes -->
+  <div class="faq-list" id="faq-cli">
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        <span><i class="fas fa-question-circle" style="color:#4a7c59;margin-right:8px;"></i>Como faço para alugar uma caçamba?</span>
+        <i class="fas fa-chevron-down arr"></i>
+      </button>
+      <div class="faq-answer">Acesse a página inicial, clique em "Buscar por CEP" e insira seu CEP. As caçambas disponíveis na sua região serão exibidas. Clique em "Alugar" na caçamba desejada, faça login ou cadastre-se, e finalize o pedido com o endereço e a data de início.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        <span><i class="fas fa-question-circle" style="color:#4a7c59;margin-right:8px;"></i>Qual o prazo de entrega da caçamba?</span>
+        <i class="fas fa-chevron-down arr"></i>
+      </button>
+      <div class="faq-answer">O prazo varia conforme a disponibilidade da empresa afiliada na sua região. Em geral, a entrega ocorre em até 24h úteis após a confirmação do pedido. Você poderá acompanhar o status (Pendente → A caminho → Entregue) diretamente no seu painel.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        <span><i class="fas fa-question-circle" style="color:#4a7c59;margin-right:8px;"></i>Como acompanho meu pedido?</span>
+        <i class="fas fa-chevron-down arr"></i>
+      </button>
+      <div class="faq-answer">Acesse seu painel em "Entrar" no topo da página. Na seção "Meus Pedidos" você verá o status atualizado em tempo real pela empresa afiliada: Pendente, A caminho, Entregue ou Concluído.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        <span><i class="fas fa-question-circle" style="color:#4a7c59;margin-right:8px;"></i>Posso cancelar um pedido?</span>
+        <i class="fas fa-chevron-down arr"></i>
+      </button>
+      <div class="faq-answer">Pedidos com status "Pendente" podem ser cancelados sem custo. Entre em contato com nosso suporte via WhatsApp ou e-mail com o número do pedido. Para pedidos já "A caminho" ou "Entregues", entre em contato diretamente com a empresa afiliada.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        <span><i class="fas fa-question-circle" style="color:#4a7c59;margin-right:8px;"></i>Quais materiais posso descartar em cada caçamba?</span>
+        <i class="fas fa-chevron-down arr"></i>
+      </button>
+      <div class="faq-answer">Cada caçamba é categorizada por tipo de resíduo: Obra/Entulho, Orgânicos, Móveis, Gesso, Vidro ou Plástico. Não misture tipos — isso impede a reciclagem correta. Materiais perigosos (tóxicos, inflamáveis, hospitalares) nunca devem ser descartados em caçambas comuns. Consulte nossa página de <a href="descarte-correto.html" style="color:#2d5a3d;font-weight:700;">Descarte Correto</a> para saber mais.</div>
+    </div>
+  </div>
+
+  <!-- FAQ Empresas -->
+  <div class="faq-list" id="faq-emp" style="display:none;">
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        <span><i class="fas fa-question-circle" style="color:#4a7c59;margin-right:8px;"></i>Como me torno um afiliado LocaFácil?</span>
+        <i class="fas fa-chevron-down arr"></i>
+      </button>
+      <div class="faq-answer">Clique em "Sou Empresa" no topo da página e preencha o cadastro com os dados da empresa. Após a aprovação, você terá acesso ao portal de afiliado onde pode cadastrar suas caçambas, definir a área de entrega e gerenciar pedidos.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        <span><i class="fas fa-question-circle" style="color:#4a7c59;margin-right:8px;"></i>Como funciona a área de entrega por CEP?</span>
+        <i class="fas fa-chevron-down arr"></i>
+      </button>
+      <div class="faq-answer">No portal afiliado, vá até "Área de Entrega" e cadastre as cidades, bairros ou faixas de CEP onde você atende. Ao cadastrar um CEP de exemplo, o sistema consulta automaticamente a API dos Correios (ViaCEP) e preenche cidade e estado. Somente clientes cujo CEP corresponda à sua cobertura verão suas caçambas.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        <span><i class="fas fa-question-circle" style="color:#4a7c59;margin-right:8px;"></i>Como atualizo o status de um pedido?</span>
+        <i class="fas fa-chevron-down arr"></i>
+      </button>
+      <div class="faq-answer">No portal afiliado, acesse a aba "Pedidos". Cada pedido tem um select de status que você pode alterar em tempo real: Pendente → A caminho → Entregue → Recolhida (que finaliza o pedido como Concluído). O cliente vê essa atualização automaticamente no painel dele.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        <span><i class="fas fa-question-circle" style="color:#4a7c59;margin-right:8px;"></i>Como cadastro minhas caçambas?</span>
+        <i class="fas fa-chevron-down arr"></i>
+      </button>
+      <div class="faq-answer">No portal afiliado, acesse "Minhas Caçambas" e clique em "Nova Caçamba". Preencha nome, tipo de resíduo, capacidade, dimensões, peso máximo, preço por semana, descrição e foto. Antes de cadastrar caçambas, configure ao menos uma área de entrega — sem isso, sua caçamba não aparecerá para clientes.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        <span><i class="fas fa-question-circle" style="color:#4a7c59;margin-right:8px;"></i>Onde vejo meus relatórios de vendas?</span>
+        <i class="fas fa-chevron-down arr"></i>
+      </button>
+      <div class="faq-answer">No portal afiliado, acesse a aba "Relatórios". Você verá receita total, ticket médio, pedidos por mês (gráfico de barras), receita acumulada (gráfico de linha) e uma tabela de resumo mensal com todos os valores.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Banner CTA ── -->
+<div class="cta-banner">
+  <div>
+    <h2>Não encontrou o que precisava?</h2>
+    <p>Nossa equipe está pronta para resolver qualquer situação.</p>
+  </div>
+  <div class="cta-banner-btns">
+    <a href="https://wa.me/5524999999999" target="_blank" class="btn-white">
+      <i class="fab fa-whatsapp"></i> WhatsApp agora
+    </a>
+    <a href="../cliente/login.html" class="btn-white-outline">
+      <i class="fas fa-user"></i> Acessar minha conta
+    </a>
+  </div>
+</div>
+
+<!-- ── Footer ── -->
+<footer class="footer">
+  <p>© 2025 LocaFácil — Todos os direitos reservados &nbsp;·&nbsp;
+    <a href="suporte.html">Suporte</a> &nbsp;·&nbsp;
+    <a href="descarte-correto.html">Descarte Correto</a> &nbsp;·&nbsp;
+    <a href="../../index.html">Início</a>
+  </p>
+</footer>
+
+<script src="../../lib/db.js"></script>
+<script src="suporte.js"></script>
+<script src="../../assets/js/menu-mobile.js"></script>
+</body>
+</html>
