@@ -1,12 +1,22 @@
 {
+  "buildCommand": false,
+  "public": ".",
   "rewrites": [
-    { "source": "/(.*)", "destination": "/$1" }
+    { "source": "/:path(.+)", "destination": "/$1" },
+    { "source": "/(.*)\\.(js|css|ico|png|jpg|jpeg|svg|webp|woff|woff2)$", "destination": "/$1.$2" }
   ],
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=3600" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, must-revalidate"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        }
       ]
     }
   ]
